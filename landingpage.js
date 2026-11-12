@@ -12,14 +12,14 @@ let cart={},promo=null;
 try{cart=JSON.parse(sessionStorage.getItem("mb_cart")||"{}");for(const k in cart)if(!P.some(x=>x.id==k))delete cart[k];promo=sessionStorage.getItem("mb_promo")}catch(e){}
 const save=()=>{try{sessionStorage.setItem("mb_cart",JSON.stringify(cart));promo?sessionStorage.setItem("mb_promo",promo):sessionStorage.removeItem("mb_promo")}catch(e){}};
 const IM={
- "1": "images/menu-classic-beef-burger.jpg",
- "2": "images/menu-cheese-burger.jpg",
- "3": "images/menu-big-mac-style-burger.jpg",
- "4": "images/menu-double-beef-burger.jpg",
- "5": "images/menu-chicken-burger.jpg",
- "6": "images/menu-french-fries.jpg",
- "7": "images/menu-chicken-nuggets.jpg",
- "8": "images/menu-coca-cola.jpg"
+ "1": "menu-classic-beef-burger.jpg",
+ "2": "menu-cheese-burger.jpg",
+ "3": "menu-big-mac-style-burger.jpg",
+ "4": "menu-double-beef-burger.jpg",
+ "5": "menu-chicken-burger.jpg",
+ "6": "menu-french-fries.jpg",
+ "7": "menu-chicken-nuggets.jpg",
+ "8": "menu-coca-cola.jpg"
 };
 $("#grid").innerHTML=P.map(x=>`<article class="card reveal"><div class="pic"><img src="${IM[x.id]}" alt="${x.n}" loading="lazy"></div><div class="body"><h3>${x.n}</h3><p>${x.d}</p><div class="price"><b>${rp(x.p)}</b><button class="add" data-add="${x.id}">+ Keranjang</button></div></div></article>`).join("");
 let tt;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2200)};
